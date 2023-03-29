@@ -1,0 +1,67 @@
+fold-group {
+    display: inline-block;
+    
+    width: fit-content;
+    height: fit-content;
+
+    border: 1px solid black;
+    border-radius: 0.5rem;
+}
+
+fg-header {
+    display: flex;
+
+    padding: 0.25rem;
+
+    min-width: fit-content;
+    width: 100%;
+    height: fit-content;
+}
+
+fg-title {
+    display: inline-block;
+    
+    padding: 0rem 0.5rem;
+    margin-right: 0.25rem;
+    
+    text-align: left;
+    line-height: 2rem;
+    
+    height: 2rem;
+    flex: 1;
+
+    overflow: hidden;
+    user-select: none;
+}
+
+fg-button {
+    display: inline-block;
+
+    text-align: center;
+    line-height: 2rem;
+
+    height: 2rem;
+    width: 2rem;
+
+    user-select: none;
+}
+
+fg-content[state="open"] {
+    height: fit-content;
+    padding: 0.25rem 0.5rem;
+
+    border-top: 1px solid black;
+}
+
+fg-content[state="closed"], fg-content {
+    height: 0;
+    overflow: hidden;
+}
+
+fg-content {
+    display: block;
+
+    transition-property: height, padding-top, padding-bottom;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}

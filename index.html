@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="kce.js" defer></script>
+    <link rel="stylesheet" href="kce.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script defer id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Konrád's Fizika Help</title>
+</head>
+<body>
+    <header>
+        <span class="page-title">Fizika Help</span>
+    </header>
+    <main class="flex-container">
+        <fold-group title="Kinematika" default-state="closed">
+            <div class="phys-table">
+                <div><p>Helyvektor</p></div>
+                <div>\[\vec{r}(t)=f(x)\]</div>
+                <div><p>Valamiféle időfüggvény által megadható. \(\triangle\vec{r}\) az elmozdulást jelenti adott \(\triangle t\) időre.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Sebesség</p></div>
+                <div>\[\vec{v}(t)=\frac{d\vec{r}}{dt}=\dot{r}\]</div>
+                <div><p>A test sebessége. Sok más függvénnyel felírható, de a legjellemzőbb hogy a helyszetváltozás deriváltja. Ha kevesebb tengellyel dolgozunk a számolás során, le lehet egyszerűsíteni \(x(t)\)-re pl.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Gyorsulás</p></div>
+                <div>\[\vec{a}(t)=\frac{d\vec{v}}{dt}=\dot{v}\]</div>
+                <div><p>Jellemzi a test sebességének a változását. \(a_x\)-re leegyszerűsíthető ha pl. csak egy tengelyünk van.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Sebesség a gyorsulás időfüggvényéből </p></div>
+                <div>\[\vec{v}(t_1)=\int_{t_0}^{t_1}\vec{a}(t)dt+\vec{v}(t_0)\]</div>
+                <div><p>-</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Helyvektor a sebesség időfüggvényéből </p></div>
+                <div>\[\vec{r}(t_1)=\int_{t_0}^{t_1}\vec{v}(t)dt+\vec{r}(t_0)\]</div>
+                <div><p>-</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Úthossz</p></div>
+                <div>\[s_{1,2}=\int_{t_1}^{t_2}|\vec{v}(t)|dt\]</div>
+                <div><p>Egy adott idő alatt megtett úthossz a közben befutott pályagörbe hosszát jelenti.
+                    Ez már csak egy skalár mennyiség.</p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Ferde hajítás" default-state="closed">
+            <div class="phys-table">
+                <div><p>Sebesség felbontása</p></div>
+                <div>\[v_{0x}=v_0\cos\alpha\]\[v_{0y}=v_0\sin\alpha\]</div>
+                <div><p>2D-s nézetet használunk ferde hajításhoz.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Gyorsulás</p></div>
+                <div>\[\vec{a}=-g\vec{k}\]</div>
+                <div><p>-</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Sebesség idő függvény (X)</p></div>
+                <div>\[v_x(t)=v_{0x}\]</div>
+                <div><p>A földetérésig az időtől független, amennyiben a légellenállástól eltekintünk.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Sebesség idő függvény (Y)</p></div>
+                <div>\[v_y(t)=v_{0y}-\frac{1}{2}gt^2\]</div>
+                <div><p>A test akkor ér földet, amikor ez a függvény 0-val egyenlő, és kirendezzük t-re.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>A csúcspontja a dobásnak</p></div>
+                <div>\[x_{max}=\frac{2{v_0}^2\sin\alpha \cos\alpha}{g}\]</div>
+                <div><p></p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Körmozgás" default-state="closed">
+            <div class="phys-table">
+                <div><p>Sugár</p></div>
+                <div>\[r=\sqrt{x^2+y^2}\]</div>
+                <div><p>(Kezdőszög: \(\phi=\tan\frac{y}{x}\))</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Szögsebesség</p></div>
+                <div>\[\omega=\frac{d\phi}{dt}=\dot{\phi}\]</div>
+                <div><p>-</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Szöggyorsulás</p></div>
+                <div>\[\beta=\frac{d\omega}{dt}=\dot{\omega}=\ddot{\phi}\]</div>
+                <div><p>-</p></div>
+            </div>
+            <p>Egyenletes körmozgás (\(\omega=\text{áll.}=\frac{2\pi}{T};\beta=0\))</p>
+            <div class="phys-table">
+                <div><p>A periódusidő alatt tesz meg egy kört a test</p></div>
+                <div>\[s(T)=2R\pi\]</div>
+                <div><p>-</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Szöggyorsulás</p></div>
+                <div>\[\beta=\frac{d\omega}{dt}=\dot{\omega}=\ddot{\phi}\]</div>
+                <div><p>-</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Sebesség</p></div>
+                <div>\[v=\frac{s(T)}{T}=\frac{2\pi R}{T}=R\omega\]</div>
+                <div><p>A sebesség 1D-snek tekinthető a kormozgás szempontjából.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Gyorsulás</p></div>
+                <div>\[a=a_{cp}=\frac{v^2}{R}=\frac{R^2\omega^2}{R}=R\omega^2\]</div>
+                <div><p>A gyorsulás iránya folyamatosan változik!</p></div>
+            </div>
+            <p>Egyenletesen változó körmozgás (\(\beta=\text{áll.}\))</p>
+            <div class="phys-table">
+                <div><p>Szögsebesség</p></div>
+                <div>\[\omega(t)=\beta t+\omega_0\]</div>
+                <div><p>Gyorsul/lassul idővel.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Gyorsulás</p></div>
+                <div>
+                    \[a_t=\beta R=\frac{dv}{dt}=\dot{v}\]
+                    \[a_{cp}=\text{(mint feljebb)}\]
+                    \[a=\sqrt{{a_t}^2+{a_{cp}}^2}\]
+                </div>
+                <div><p></p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Út</p></div>
+                <div>\[s(t)=\frac{1}{2}a_tt^2+v_0t\]</div>
+                <div><p>A megtett út csak a tangenciális gyorsulás komponenstől
+                    függ (a másik komponens csak az irányt változtatja)</p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Dinamika" default-state="closed">
+            <div class="phys-table">
+                <div><p></p></div>
+                <div>\[\]</div>
+                <div><p></p></div>
+            </div>
+            <div class="phys-table">
+                <div><p></p></div>
+                <div>\[\]</div>
+                <div><p></p></div>
+            </div>
+            <div class="phys-table">
+                <div><p></p></div>
+                <div>\[\]</div>
+                <div><p></p></div>
+            </div>
+        </fold-group>
+    </main>
+    <div class="flex-spacer"></div>
+    <footer>
+        #2023 Kiss Konrád Soma
+    </footer>
+</body>
+</html>
