@@ -1,4 +1,8 @@
 {
+    function registerGlobalFunction(name, func) {
+        this[name] = func;
+    }
+
     const templates = 
     `<template id="fold-group-template">
         <fg-header>
@@ -9,6 +13,33 @@
     </template>`;
     this.document.body.innerHTML += templates;
 }
+
+class HTMLSidebar extends HTMLElement {
+    buttonCount = 0;
+    
+    toggleSidebar() {
+        this.setAttribute("state", (this.getAttribute("state") ?? "closed") == "closed" ? "open" : "closed");
+    }
+
+    registerSidebarButton(title) {
+        let element = document.createElement("sb-button");
+        element.innerText = title;
+        this.appendChild(element);
+        return element;
+    }
+
+    constructor()  {
+        super();
+
+        registerGlobalFunction("toggleSidebar", () => {
+            this.toggleSidebar();
+        });
+        registerGlobalFunction("registerSidebarButton", (title) => {
+            return this.registerSidebarButton(title);
+        })
+    }
+}
+customElements.define("side-bar", HTMLSidebar);
 
 class HTMLFoldGroup extends HTMLElement {
     constructor() {
@@ -39,7 +70,11 @@ class HTMLFoldGroup extends HTMLElement {
             foldButton.innerHTML = foldButton.innerHTML == "\u2715" ? "&#x2630" : "&#x2715";
         };
         foldHeader.addEventListener("click", clickEvent);
+
+        registerSidebarButton(title).addEventListener("click", (e) => {
+            document.querySelector(`fold-group[title="${e.target.innerText}"]`).scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+            toggleSidebar();
+        });
     }
 }
-
 customElements.define("fold-group", HTMLFoldGroup);
