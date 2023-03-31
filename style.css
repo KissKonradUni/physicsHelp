@@ -6,8 +6,7 @@
     --accent-text-color: #0cf;
 }
 
-body,
-html {
+body, html {
     margin: 0;
     padding: 0;
     min-width: 100%;
@@ -119,8 +118,19 @@ footer {
     border-radius: 0.5rem;
 }
 
+.phys-table>div:nth-last-of-type(1) {
+    display: block;
+    flex: 1;
+}
+
 .phys-table>div:nth-of-type(2) {
     overflow-x: auto;
+    flex: 2;
+}
+
+.phys-table>div:nth-of-type(3) {
+    display: flex;
+    flex: 2;
 }
 
 .vertical-center {
@@ -148,11 +158,47 @@ footer {
     transition: 0.1s ease-in-out filter ;
 }
 
-.sidebar-toggle-btn:hover {
+.lightmode-toggle-btn {
+    width: 3rem;
+    height: 3rem;
+    margin: 0.5rem 0 0 0;
+
+    background-color: var(--main-color);
+    border: 1px solid black;
+    border-right: none;
+    border-radius: 0;
+    
+    color: var(--main-text-color);
+    font-size: 1.5rem;
+
+    box-shadow: 0.2rem 0 0.1rem 0.1rem #00000044;
+
+    transition: 0.1s ease-in-out filter ;
+}
+
+.search-toggle-btn {
+    width: 3rem;
+    height: 3rem;
+    margin: 0.5rem 0.02rem 0 0;
+
+    background-color: var(--main-color);
+    border: 1px solid black;
+    border-right: none;
+    border-radius: 0.5rem 0 0 0.5rem;
+    
+    color: var(--main-text-color);
+    font-size: 1.5rem;
+
+    box-shadow: 0.0rem 0 0.1rem 0.1rem #00000044;
+
+    transition: 0.1s ease-in-out filter ;
+}
+
+.sidebar-toggle-btn:hover, .search-toggle-btn:hover, .lightmode-toggle-btn:hover {
     filter: brightness(1.3);
 }
 
-.sidebar-toggle-btn:active {
+.sidebar-toggle-btn:active, .search-toggle-btn:active, .lightmode-toggle-btn:active {
     filter: brightness(0.7);
 }
 
@@ -164,6 +210,12 @@ fold-group {
     scroll-margin-top: 4.5rem;
 }
 
+fg-content>p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 side-bar {
     background-color: #00000088;
     border-right: 2px solid var(--accent-text-color);
@@ -171,6 +223,54 @@ side-bar {
 
 sb-button {
     background-color: var(--secondary-color);
+}
+
+a, a:visited {
+    color: var(--accent-text-color);
+}
+
+.search {
+    display: none;
+    position: absolute;
+    right: 0rem;
+    top: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    max-width: 20rem;
+    width: 0rem;
+    margin-right: 1rem;
+
+    z-index: -5;
+    opacity: 0;
+
+    background-color: var(--main-color);
+    border: 1px solid black;
+    border-top: none;
+    border-right: none;
+    border-radius: 0 0 0 0.5rem;
+    padding: 0rem;
+
+    transition: 0.2s ease-in-out width, 0.2s ease-in-out padding, 0.1s ease-in-out opacity;
+}
+
+.search[state="open"] {
+    top: 4rem;
+    right: -0.99rem;
+    width: 10rem;
+    padding: 1rem;
+    opacity: 1;
+}
+
+input[type="text"] {
+    width: 100%;
+    height: 2rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
 }
 
 @media only screen and (max-width: 41rem) {

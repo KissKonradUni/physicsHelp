@@ -12,6 +12,25 @@
         <fg-content>\${CONTENT}</fg-content>
     </template>`;
     this.document.body.innerHTML += templates;
+
+    const lightmode = `
+    <style id="lightmode">
+        :root {
+            --main-color: #ddd;
+            --secondary-color: #bbb;
+            --tetriary-color: #fff;
+            --main-text-color: #000;
+            --accent-text-color: #f80;
+        }
+    </style>
+    `;
+    this.document.body.innerHTML += lightmode;
+    document.getElementById("lightmode").setAttribute("media", "max-width: 1px;");
+
+    registerGlobalFunction("toggleLightmode", (e) => {
+        let styleElement = document.getElementById("lightmode");
+        styleElement.setAttribute("media", styleElement.getAttribute("media") == "max-width: 1px;" ? "" : "max-width: 1px;");
+    });
 }
 
 class HTMLSidebar extends HTMLElement {

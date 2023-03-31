@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script defer id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="main.js"></script>
     <title>Konrád's Fizika Help</title>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -18,6 +19,16 @@
     <header>
         <button onclick="toggleSidebar()" class="sidebar-toggle-btn">☰</button>
         <div class="vertical-center"><span class="page-title">Fizika Help</span></div>
+        <div class="flex-spacer"></div>
+        <div class="search" state="closed">
+            <input type="text" name="search-bar" id="search-bar" oninput="search()">
+        </div>
+        <button onclick="toggleSearch()" class="search-toggle-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+            </svg>
+        </button>
+        <button onclick="toggleLightmode()" class="lightmode-toggle-btn">◐</button>
     </header>
     <side-bar>
     </side-bar>    
@@ -79,7 +90,7 @@
             <div class="phys-table">
                 <div><p>A csúcspontja a dobásnak</p></div>
                 <div>\[x_{max}=\frac{2{v_0}^2\sin\alpha \cos\alpha}{g}\]</div>
-                <div><p></p></div>
+                <div><p>-</p></div>
             </div>
         </fold-group>
         <fold-group title="Körmozgás" default-state="closed">
@@ -158,7 +169,7 @@
                 <div><p>Favorit, jegyezd meg jól :3</p></div>
             </div>
         </fold-group>
-        <fold-group title="Erőtörvények" default-state="closed">
+        <fold-group title="Erőtörvények 1 (Gravitáció, Rugó és Súrlódás)" default-state="closed">
             <div class="phys-table">
                 <div><p>Gravitációs erő</p></div>
                 <div>\[F_G=\frac{\gamma m_1m_2}{r^2}\]</div>
@@ -171,6 +182,11 @@
                     \[g=9,81\frac{m}{s^2}\approx10\]
                 </div>
                 <div><p>(A földfelszínnél érvényes.) ÓRÁN 10-EL SZÁMOLUNK! A \(\vec{k}\) elhagyható, a lefele mutató egységvektort jelöli.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Tartóerő</p></div>
+                <div>\[F_T=-F_g\]</div>
+                <div><p>-</p></div>
             </div>
             <div class="phys-table">
                 <div><p>Rugóerő</p></div>
@@ -196,6 +212,8 @@
                 <div>\[F_{gs}=\mu_gF_{ny}\]</div>
                 <div><p>A gurulási iránnyal ellentétes.</p></div>
             </div>
+        </fold-group>
+        <fold-group title="Erőtörvények 2 (Közeg, Kötél, illetve Munka és társai)" default-state="closed">
             <div class="phys-table">
                 <div><p>Közegellenállás</p></div>
                 <div>
@@ -206,13 +224,8 @@
             </div>
             <div class="phys-table">
                 <div><p>Kötélerő</p></div>
-                <div>\[\]TODO: Under construction</div>
-                <div><p>welp</p></div>
-            </div>
-            <div class="phys-table">
-                <div><p>Tartóerő</p></div>
-                <div>\[F_T=-F_g\]</div>
-                <div><p>-</p></div>
+                <div><p>(\(F_K\)) Megegyezik az erőkkel amelyekkel ellen tart. Feladatonként változhat.</p></div>
+                <div><p>Gyakorlati példák olvasása segít rajta.</p></div>
             </div>
             <div class="phys-table">
                 <div><p>Lendület</p></div>
@@ -225,34 +238,351 @@
             </div>
             <div class="phys-table">
                 <div><p>Munka</p></div>
-                <div>\[\]TODO: Under construction</div>
-                <div><p>rip</p></div>
+                <div>
+                    \[W_{1,2}=\int_{\vec{r_1}}^{\vec{r_2}}\vec{F}\cdot d\vec{r}\]
+                    \[W_{1,2}=\int_{t_1}^{t_2}P\space dt\]
+                    \[W=Fs\]
+                </div>
+                <div><p>Az alsó a legegyszerűbb eset, amikor az erő végig a mozgás irányába mutat.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Teljesítmény</p></div>
+                <div>\[P=\frac{dE}{dt}=\frac{dE_k}{dt}=\vec{F}\cdot\vec{v}\]</div>
+                <div><p>Az energiaközlés üteme (egységnyi idő alatt közölt energia).</p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Erőtörvények 3 (Energia família)" default-state="closed">
+            <p>Konzervatív erőterek esetén:</p>
+            <div class="phys-table">
+                <div><p>Kinetikus energia \((J)\)</p></div>
+                <div>
+                    \[W=Fs=ma\frac{a}{2}t^2\]
+                    \[W=\frac{1}{2}m(at)^2=\frac{1}{2}mv^2\]
+                    \[W\approx E_K=\frac{1}{2}mv^2\]
+                </div>
+                <div><p>\(E_K\) a végén a lényeg!<br> A munkatételből kerül levezetésre, egy adott erővel mozgatott testre ható energia egy adott út megtétele után.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Potenciális energia \((J)\)</p></div>
+                <div>\[E_p(B)=W_{BA}=\int_B^A\vec{F}\cdot d\vec{r}\]</div>
+                <div><p>A potenciális energia azzal a munkával egyenlő, amelyet a tér végez miközben a test onnan a számunkra felvett 0 pontba mozdul.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Mechanikai energia \((J)\)</p></div>
+                <div>
+                    \[E_M=E_p+E_K\]
+                    \[E_p(B)-E_p(C)={W_{BC}}^k=E_K(C)-E_K(B)\]
+                    \[-\triangle E_p={W_{BC}}^k=\triangle E_K\]
+                </div>
+                <div><p>Vezessük be a mechanikai energiát, mely a kinetikus és potenciális energiák összege. Ezek a képletek csak akkor igazak, amennyiben csak konzervatív erőterek hatnak a testre!</p></div>
+            </div>
+            <p>Nem konzervatív erőterek esetén:</p>
+            <div class="phys-table">
+                <div><p>Teljes munka</p></div>
+                <div>
+                    \[W_{BC}={W_{BC}}^k+{W_{BC}}^{nk}=E_K(C)-E_K(B)\]
+                    \[{W_{BC}}^{nk}=E_M(C)-E_M(B)\]
+                </div>
+                <div><p>
+                    \(({W_{BC}}^{nk})=\) nem konzervatív munka<br>
+                    \(({W_{BC}}^{k})=\) konzervatív munka<br>
+                </p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Rezgések" default-state="closed">
+            <p>Harmónikus rezgőmozgás</p>
+            <div class="phys-table">
+                <div><p>Kitérés-idő függvény</p></div>
+                <div>
+                    \[x(t)=A\sin(\omega t+\delta)\]
+                </div>
+                <div><p>
+                    \(A=\) Amplitúdó<br>
+                    \(\omega=\) Körfrekvencia<br>
+                    \(\delta=\) Kezdőszög<br>
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Sebesség</p></div>
+                <div>
+                    \[v_x(t)=\frac{dx}{dt}=-A\omega^2\cos(\omega t+\delta)\]
+                </div>
+                <div><p>Ez nem szögsebesség!</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Gyorsulás</p></div>
+                <div>
+                    \[a_x(t)=\frac{dv_x}{dt}=-A\omega^2\sin(\omega t+\delta)\]
+                    \[a_x(t)=-\omega^2x\]
+                </div>
+                <div><p>Ez nem szöggyorsulás!</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Körfrekvencia</p></div>
+                <div>
+                    \[x(t)=x(t+T)\]
+                    \[\omega=\frac{2\pi}{T}=2\pi f\]
+                </div>
+                <div><p>Az első sor azt mutatja be, hogy \((T)\) a periódusidő, mert a rezgés ismétlődő mozgás.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Kinetikus energia</p></div>
+                <div>
+                    \[E_K=\frac{1}{2}mv^2=\frac{1}{2}DA^2\cos^2({\omega t})\]
+                </div>
+                <div><p>Ez egy rugalmas erőtér esetén használható példa.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Potenciális energia</p></div>
+                <div>
+                    \[E_p=\frac{1}{2}Dx^2=\frac{1}{2}DA^2\sin^2(\omega t)\]
+                </div>
+                <div><p>Ez egy rugalmas erőtér esetén használható példa.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Mechanikai energia</p></div>
+                <div>
+                    \[E_M=E_K+E_p\]
+                    \[E_M=\frac{1}{2}DA^2\]
+                </div>
+                <div><p>Rendezéssel a \(\sin^2(\alpha)+\cos^2(\alpha)=1\) azonosság kiesett.</p></div>
+            </div>
+            <p>Csillapított rezgés</p>
+            <div class="phys-table">
+                <div><p>Mozgásegyenlet</p></div>
+                <div>
+                    \[ma=-Dx-kv\]
+                </div>
+                <div><p>A rugalmas mozgást csillapítja a fékezőerő.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Fékezőerő</p></div>
+                <div>
+                    \[F_f=-kv\]
+                </div>
+                <div><p>A \((k)\) egy konstans, a fékezés erősségét jellemzi.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Csillapítási tényező</p></div>
+                <div>
+                    \[\alpha=\frac{k}{2m}\]
+                </div>
+                <div><p>
+                    \({\omega_0}^2=\) Kezdeti körfrekvencia<br>
+                    <table>
+                        <tr>
+                            <td>\(\alpha^2-{\omega_0}^2< 0 \Rightarrow\) </td>
+                            <td>Gyenge csillapítás</td>
+                        </tr>
+                        <tr>
+                            <td>\(\alpha^2-{\omega_0}^2= 0 \Rightarrow\)</td>
+                            <td>Kritikus csillapítás</td>
+                        </tr>
+                        <tr>
+                            <td>\(\alpha^2-{\omega_0}^2> 0 \Rightarrow\)</td>
+                            <td>Erős csillapítás</td>
+                        </tr>
+                    </table>
+                </p></div>
+            </div>
+            <p>Gyengén csillapított esetben</p>
+            <div class="phys-table">
+                <div><p>Általános alakok</p></div>
+                <div>
+                    \[\lambda_{1,2}=-\alpha\pm i\omega\]
+                    \[x(t)=Ce^{-\alpha t}sin(\omega t + \delta)\]
+                    \[v(t)=-\alpha Ce^{-\alpha t}\sin(\omega t+\delta)+\omega Ce^{-\alpha t}\cos(\omega t+\delta)\]
+                </div>
+                <div><p>\(i=\sqrt{-1}\);<br>Ha \(x(0)\) és \(v(0)\) határértékeket kiszámolom megkapható \(C\) és \(\delta\). Ha ilyet kapsz zh-n, részvétem.</p></div>
+            </div>
+            <p>Kényszerrezgés</p>
+            <div class="phys-table">
+                <div><p>Erőegyenlet</p></div>
+                <div>
+                    \[ma=-Dx-kv+F_0\sin(\omega t)\]
+                </div>
+                <div><p>Egy periódikus erő megjelenik ami a disszipált energiát pótolja</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Mozgástörvény</p></div>
+                <div>
+                    \[x(t)=\frac{F_0/m}{\sqrt{({\omega_0}^2-\omega^2)^2+4\alpha^2\omega^2}}\sin(\omega t-\delta)\]
+                </div>
+                <div><p>
+                    \(\frac{D}{m}={\omega_0}^2\)<br>
+                    \(\omega_0=\) Sajátfrekvencia<br>
+                    \(\delta=\) Fáziskésés
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Rezonancia frekvencia</p></div>
+                <div>
+                    \[\omega_0\approx\omega_0\space\text{ha}\space\alpha\space\text{kicsi}\]
+                </div>
+                <div><p>Az amplitúdó minden határon túl nőhet, amíg a rendszer szét nem esik - rezonancia katasztrófa. (<a href="https://youtu.be/8xE_nT3QySo?t=121">Videó, ahol a szél okozta</a>)</p></div>
+            </div>
+            <p>Hullámok</p>
+            <div class="phys-table">
+                <div><p>Hullám időbeli leírása</p></div>
+                <div>
+                    \[y(t)=A\sin(\omega t)\]
+                    \[y(x,t)=A\sin(\omega t - kx)\]
+                </div>
+                <div><p>
+                    <table>
+                        <tr>
+                            <td>\(c=\lambda/f=\text{áll.}=\)</td>
+                            <td>Fázissebesség</td>
+                        </tr>
+                        <tr>
+                            <td>\(T=1/f=\)</td>
+                            <td>Periódusidő</td>
+                        </tr>
+                        <tr>
+                            <td>\(\omega=2\pi f=2\pi/T=\)</td>
+                            <td>Körfrekvencia</td>
+                        </tr>
+                        <tr>
+                            <td>\(\lambda=Tc=\)</td>
+                            <td>Hullámhossz</td>
+                        </tr>
+                        <tr>
+                            <td>\(k=2\pi/\lambda=\)</td>
+                            <td>Körhullámszám</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Körmozgás és forgómozgás" default-state="closed">
+            <div class="phys-table">
+                <div><p>Eredő erő</p></div>
+                <div>
+                    \[{\sum}_iF_i=F_e=ma=m\omega^2R\]
+                </div>
+                <div><p>Egyenletes körmozgás során a sebesség állandó, iránya viszont folyamatosan változik. Van egy gyorsulás ami a középpont fele mutat.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Forgatónyomaték</p></div>
+                <div>
+                    \[\vec{M}=\vec{r}\times\vec{F}\]
+                    \[M=\vec{F}\vec{r}=Fr\sin\alpha\]
+                </div>
+                <div><p>Változó körmozgás esetén alkalmazható.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Perdület</p></div>
+                <div>
+                    \[\vec{L}=\vec{r}\times\vec{p}=\vec{r}\times(m\vec{v})\]
+                    \[\frac{d\vec{L}}{dt}=\vec{M_e}\]
+                </div>
+                <div><p>Pontszerű test perdületének általános definíciója.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Tehetetlenségi nyomaték</p></div>
+                <div>
+                    \[L(t)=mr^2\omega(t)\]
+                    \[\frac{dL}{dt}=mr^2\beta(t)\]
+                    \[!\space\theta=mr^2\space!\]
+                </div>
+                <div><p>
+                    A \(\theta\) a nyomaték.<br>
+                    Ebből még levezethető az alábbi:<br>
+                    \(\frac{dL}{dt}=\theta\beta(t)=M\), tehát<br>
+                    \(M=\theta\beta\)
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Mozgási energia</p></div>
+                <div>
+                    \[E_K=\frac{1}{2}mv^2=\frac{1}{2}\theta\omega^2\]
+                </div>
+                <div><p>A tömegpont mozgási energiája</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Elemi munka</p></div>
+                <div>
+                    \[\delta W=\vec{F}\cdot d\vec{s}=m\beta r\space\delta s=m\beta r^2\]
+                    \[\delta W=\space\delta\phi=\theta\beta\space\delta\phi=M\delta\phi\]
+                </div>
+                <div><p>
+                    Az elemi munka egy infinitezimális elmozdulás során. (wat)
+                    Itt a legtöbb esetben a \(\delta\) a megváltozást jelenti, nem konstansot.
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Teljesítmény</p></div>
+                <div>
+                    \[P=\frac{dE_k}{dt}=\frac{\delta W}{dt}=M\frac{d\phi}{dt}=M\omega\]
+                </div>
+                <div><p>-</p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Kiterjedt testek, tömegpontrendszerek" default-state="open">
+            <div class="phys-table">
+                <div><p>Súlypont</p></div>
+                <div>
+                    \[m_1gx_s=Mg(\frac{l}{2}-x_s)+m_2g(l-x_s)\]
+                    \[x_S=\frac{Mg(\frac{l}{2})+m_2gl}{m_1g+Mg+m_2g}\]
+                </div>
+                <div><p>
+                    Az alátámasztás helyére
+                    az eredő forgatónyomatéknak
+                    nullának kell lennie.
+                    Ez <a href="img01.png">ábrával</a> értelmes főként.
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Tömegközéppont</p></div>
+                <div>
+                    <p>\(a\) db test esetén:</p>
+                    \[x_m=\frac{\sum_{n=1}^{a}(m_n\cdot x_n)}{\sum_{n=1}^{a}m_n}\]
+                </div>
+                <div><p>Kiterjedt test tömegközéppontjának helye a testet felépítő pontok helyének tömegekkel
+                    súlyozott átlaga (illetve a részek tömegközéppontjainak tömegekkel súlyozott átlaga)<br>
+                    <a href="img02.png">Ábra</a> talán segít.
+                </p></div>
+            </div>
+        </fold-group>
+        <fold-group title="The future is coming..." default-state="closed">
+            <img src="https://media.tenor.com/fTTVgygGDh8AAAAM/kitty-cat-sandwich.gif" alt="" srcset="">
+            <!--
+            <div class="phys-table">
+                <div><p></p></div>
+                <div>
+                    \[\]
+                </div>
+                <div><p></p></div>
             </div>
             <div class="phys-table">
                 <div><p></p></div>
-                <div>\[\]</div>
+                <div>
+                    \[\]
+                </div>
                 <div><p></p></div>
             </div>
             <div class="phys-table">
                 <div><p></p></div>
-                <div>\[\]</div>
+                <div>
+                    \[\]
+                </div>
                 <div><p></p></div>
             </div>
             <div class="phys-table">
                 <div><p></p></div>
-                <div>\[\]</div>
+                <div>
+                    \[\]
+                </div>
                 <div><p></p></div>
             </div>
-            <div class="phys-table">
-                <div><p></p></div>
-                <div>\[\]</div>
-                <div><p></p></div>
-            </div>
-            <div class="phys-table">
-                <div><p></p></div>
-                <div>\[\]</div>
-                <div><p></p></div>
-            </div>
+            -->
+        </fold-group>
+        <fold-group title="Források" default-state="closed">
+            <a href="https://www.uni-miskolc.hu/~www_fiz/pszota/Fizika_BI_BF/fizika_BI_BF.html">Fizika BI és BF - Pszota Gábor</a>
         </fold-group>
     </main>
     <div class="flex-spacer"></div>

@@ -123,11 +123,14 @@ sb-button {
 
     z-index: 5;
 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     font-size: 1.2rem;
     line-height: 2.5rem;
     padding-left: 1rem;
     
-    text-shadow: 0 0 0.25rem black;
+    text-shadow: 0 0 0.25rem var(--main-color);
 
     user-select: none;
 }
