@@ -85,6 +85,7 @@ fg-content {
 side-bar {
     display: block;
     position: fixed;
+    overflow-y: auto;
 
     top: 4rem;
     left: -30rem;

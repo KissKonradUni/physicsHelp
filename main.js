@@ -9,11 +9,9 @@ registerGlobalFunction("search", () => {
 
     if (search != "") {
         elemArray.filter((elem) => !elem.innerText.toLowerCase().includes(search)).forEach((elem) => {
-            console.log(elem.innerText);
             elem.setAttribute("style", "display: none;");
         });
         pArray.filter((elem) => !elem.innerText.toLowerCase().includes(search)).forEach((elem) => {
-            console.log(elem.innerText);
             elem.setAttribute("style", "display: none;");
         });
         fArray.forEach((e) => e.setAttribute("state", "open"));

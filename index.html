@@ -197,7 +197,7 @@
                 <div><p>Tapadási súrlódás</p></div>
                 <div>
                     \[F_{ts}=F_1\]
-                    \[F_1<=F_{ts,max}\]
+                    \[F_1 \le F_{ts,max}\]
                     \[F_{ts,max}=\mu_tF_{ny}\]
                 </div>
                 <div><p>\(F_1\) az erő ami valamely irányba tolja a testet.</p></div>
@@ -212,6 +212,7 @@
                 <div>\[F_{gs}=\mu_gF_{ny}\]</div>
                 <div><p>A gurulási iránnyal ellentétes.</p></div>
             </div>
+            
         </fold-group>
         <fold-group title="Erőtörvények 2 (Közeg, Kötél, illetve Munka és társai)" default-state="closed">
             <div class="phys-table">
@@ -479,6 +480,7 @@
                 <div>
                     \[\vec{L}=\vec{r}\times\vec{p}=\vec{r}\times(m\vec{v})\]
                     \[\frac{d\vec{L}}{dt}=\vec{M_e}\]
+                    \[M_e=\theta\beta\]
                 </div>
                 <div><p>Pontszerű test perdületének általános definíciója.</p></div>
             </div>
@@ -487,7 +489,7 @@
                 <div>
                     \[L(t)=mr^2\omega(t)\]
                     \[\frac{dL}{dt}=mr^2\beta(t)\]
-                    \[!\space\theta=mr^2\space!\]
+                    \[\space\theta=mr^2\space\]
                 </div>
                 <div><p>
                     A \(\theta\) a nyomaték.<br>
@@ -547,31 +549,312 @@
                     <a href="img02.png">Ábra</a> talán segít.
                 </p></div>
             </div>
+            <div class="phys-table">
+                <div><p>Lendület tömegpont-rendszerre</p></div>
+                <div>
+                    \[\frac{d}{dt}\vec{p}={\sum}_i\vec{F}_i\]
+                </div>
+                <div><p>4. dia 1. oldal remek magyarázatot ad rá.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Ütközések</p></div>
+                <div>
+                    <p></p>
+                    \(\vec{p}_{A1}+\vec{p}_{B1}+\vec{p}_{C1}+...=\)\(\vec{p}_{A2}+\vec{p}_{B2}+\vec{p}_{C2}+...\)
+                    <p></p>
+                    \(m_A\vec{v}_{A1}+m_A\vec{v}_{A2}+...+m_A\vec{v}_{AN} =\)
+                    \(\space m_B\vec{v}_{B1}+m_B\vec{v}_{B2}+...+m_B\vec{v}_{BN}\)
+                    <p>Teljesen rugalmatlan:</p>
+                    \[v_{A2}=v_{B2}\]\[\space m=m_A+m_B\]
+                    <p>Teljesen rugalmas:</p>
+                    \(\frac{1}{2}m_A{v_{A1}}^2+\frac{1}{2}m_B{v_{B1}}^2=\)
+                    \(\frac{1}{2}m_A{v_{A2}}^2+\frac{1}{2}m_B{v_{B2}}^2\)
+                    <p></p>
+                </div>
+                <div><p>
+                    A lényeg hogy többfélekeppén is leírtam hogy a bemenő lendület megegyezik a kimenővel.
+                    A tökéletesen rugalmatlan esetén a két test összetapad és megy az eredő sebesség fele, a tökéletesen rugalmas esetén pedig a kinetikus energiájuk
+                    megmarad és az ellenkező irányba elpattannak.<br>
+                    A betű \((A,B)\) a testet jelölik, a szám \((1,2)\) az ütközés előtti vagy utáni mennyiséget.
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Ütközési szám</p></div>
+                <div>
+                    \[k=\frac{v_{B2}-v_{A2}}{v_{A1}-v_{B1}}\]
+                </div>
+                <div><p>
+                    Tökéletesen rugalmatlan: \(k = 0\)<br>
+                    Tökéletesen rugalmas: \(k = 1\)<br>
+                    Általános: \(0\le k \le 1\)
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Tömegközépponti tétel</p></div>
+                <div>
+                    \[m\vec{a}_s=\sum_{i=1}^{N}\vec{F}_i\]
+                </div>
+                <div><p>Pontrendszer tömegközéppontja úgy mozog, mintha a rendszer összes tömege ebbe a
+                    pontba lenne egyesítve, és az összes külső erő erre a pontra hatna.</p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Perdület, munkatétel, stb." default-state="closed">
+            <div class="phys-table">
+                <div><p>Perdülettétel</p></div>
+                <div>
+                    \[\vec{M}_e=\frac{d\vec{L}}{dt}\]
+                    \[M_e=\theta\beta\]
+                </div>
+                <div><p>A perdülettétel a lendülettételhez hasonlóan levezethető.
+                    A tömegpontrendszer perdületének idő szerinti deriváltja egyenlő az eredő
+                    forgatónyomatékkal.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Munkatétel</p></div>
+                <div>
+                    \[W=\triangle E_K\]
+                </div>
+                <div><p>
+                    A tömegpontrendszerre vonatkozó munkatétel azt mondja ki, hogy a rendszer kinetikus
+                    energiájának megváltozása egyenlő az összes erő (külső és belső) által a rendszeren
+                    végzett munkával.
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Tehetetlenségi nyomaték</p></div>
+                <div>
+                    \[\theta=\sum_{i=1}^{N}m_i{r_i}^2\]
+                </div>
+                <div><p>
+                    Egy tömegpontrendszer tehetetlenségi nyomatéka az egyes tömegpontok tehetetlenségi
+                    nyomatékainak összege.
+                </p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Folyadékok és gázok" default-state="closed">
+            <div class="phys-table">
+                <div><p>Hidrosztatikai nyomás</p></div>
+                <div>
+                    \[p=\frac{mg}{A}=\frac{V\rho g}{A}=\frac{Ah\rho g}{A}=h\rho g\]
+                </div>
+                <div><p>
+                    \(\rho \Rightarrow \) Sűrűség<br>
+                    A hidrosztatikai nyomás a folyadék (h magasságú oszlop)
+                    súlyereje által okozott nyomás (egyenletesen oszlik el)
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Pascal törvénye</p></div>
+                <div>
+                    \[p_b=p_j\]
+                </div>
+                <div><p>
+                    4. dia 10. oldal rendkívül jól szemlélteti.
+                    Egy U alakú cső bal oldalán lévő nyomás (légköri és hidrosztatikai) meg kell hogy egyezzen a jobb oldalán lévővel.
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Felhajtó erő</p></div>
+                <div>
+                    \[F_f=\rho_fV_{kisz}*g=m_{kisz}g\]
+                </div>
+                <div><p>
+                    \({}_{kisz} \Rightarrow\) Kiszorított<br>
+                    \({}_f \Rightarrow\) Folyadék
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Kontinuitási egyenlet</p></div>
+                <div>
+                    \[0=\oint\rho\vec{v}\cdot d\vec{A}=\]
+                    \[\int_{A_1}\rho\vec{v}\cdot d\vec{A}+\int_{A_2}\rho\vec{v}\cdot d\vec{A}+\int_{A_p}\rho\vec{v}\cdot d\vec{A}\]
+                    \[\rho_1A_1v_1=\rho_2A_2v_2\]
+                </div>
+                <div><p>
+                    \(A \Rightarrow\) Összfelület<br>
+                    \(A_1 \Rightarrow\) Cső egyik vége<br>
+                    \(A_2 \Rightarrow\) Cső másik vége<br>
+                    \(A_p \Rightarrow\) Palást<br>
+                    A 3. sor igazságából ered hogy a bemenő és kimenő folyadék mennyisége megegyezik, tehát vagy a kimenő rész keresztmetszete, vagy a kimenő folyadék sebessége kell hogy változzon az egyenlőség fennmaradásához.
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Bernoulli egyenlet</p></div>
+                <div>
+                    \[p_1+\frac{1}{2}\rho{v_1}^2+\rho gh_1=p_2+\frac{1}{2}\rho{v_2}^2+\rho gh_2\]
+                </div>
+                <div><p>A 4. dia 15. oldala egy remek példát tartalmaz a használathoz.</p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Térfogati munka, hőközlés és hőtan" default-state="closed">
+            <div class="phys-table">
+                <div><p>Térfogati munka</p></div>
+                <div>
+                    \[\delta W=pA{dx}=-pdV\]
+                    \[\delta W_{gáz}=-\delta W\]
+                    \[W_{1,2}=-\int_{V_1}^{V_2}p(V)dV\]
+                </div>
+                <div><p>
+                    Egy könnyen mozgó dugattyún végzett elemi munka a környezet által, miközben
+                    azt \(dx\) távolsággal beljebb nyomja: \(\delta W\)
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Hőkapacitás</p></div>
+                <div>
+                    \[Q=C\cdot\triangle T\]
+                    \[Q=c\cdot m\cdot\triangle T\]
+                    \[Q=c_M\cdot n\cdot\triangle T\]
+                </div>
+                <div><p>A rendszer hőmérsékletének 1 fokkal emeléséhez szükséges hő energia.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Fajhő</p></div>
+                <div>
+                    \[C=c\cdot m\space\space [c]\]
+                </div>
+                <div><p>[] -> A rendszer egységnyi tömegű részének hőkapacitása.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Mólhő</p></div>
+                <div>
+                    \[C=c_M\cdot n\space\space[c_M]\]
+                </div>
+                <div><p>
+                    [] -> A rendszer egy mólnyi részének hőkapacitása.<br>
+                    \(n\) a mólok száma.
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>A hőtan első <b>fő</b>tétele</p></div>
+                <div>
+                    \[\triangle E_b=Q+W\]
+                </div>
+                <div><p>A hőtan első főtétele kimondja, hogy egy rendszer belső energiájának megváltozása
+                    egyenlő a rendszerrel közölt hő és a rendszeren végzett munka összegével.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Ekvipartíció tétele</p></div>
+                <div>
+                    \[\varepsilon_f=\frac{1}{2}kT\]
+                    \[k=1,38\cdot10^{-23} J/K\]
+                    <p>(Boltzmann-Állandó)</p>
+                </div>
+                <div><p>
+                    Egyensúlyi rendszerben, egy adott hőmérsékleten minden rendelkezésre
+                    álló szabadsági fokra időátlagban jutó \(\varepsilon_f\) energia megegyezik.
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Szabadságfokok száma</p></div>
+                <div>
+                    \[3\le f\le6\]
+                </div>
+                <div><p>Az egymástól független energiatárolási módok.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Ideális gáz belső energiája</p></div>
+                <div>
+                    \[E_b=\frac{f}{2}NkT=\frac{f}{2}nRT\]
+                </div>
+                <div><p>
+                    \(N \Rightarrow\) Részecskék száma<br>
+                    \(n = N/N_A \Rightarrow\) Mólok száma<br>
+                    \(N_A \Rightarrow\) Avogadro-szám<br>
+                    \(R=kN_A=8,31\frac{J}{mol\cdot K} \Rightarrow\) Egyetemes gázállandó
+                </p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Dulong-Petit szabály</p></div>
+                <div>
+                    \[c_M=3R\]
+                    \[V=\text{áll.},W=0\]
+                    \[\triangle E_b=Q+W=Q\]
+                    \[Q=3nR\triangle T=c_Mn\triangle T\]
+                </div>
+                <div><p>Ha minden atomra \(f=6\) akkor \(E_b=3NkT=3nRT\) és így használható ez az egyenlőség.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Ideális gázok állapotegyenlete</p></div>
+                <div>
+                    \[pV=NkT\]
+                    \[pV=nRT\]
+                    \[\frac{p_1V_1}{T_1}=\frac{p_2V_2}{T_2}\]
+                </div>
+                <div><p>Ideális gáz minden állapotában, az állapothatározók között érvényes ez az összefüggés.</p></div>
+            </div>
+        </fold-group>
+        <fold-group title="Gázok" default-state="open">
+            <p>Gázok speciális állapotváltozásai \(\space\space n=\text{áll.}\)</p>
+            <div class="phys-table">
+                <div>Izobár \(p=\text{áll.}\)</div>
+                <div>
+                    \[V/T=\text{áll.}\]
+                    \[W=-p\triangle V=-nR\triangle T\]
+                </div>
+                <div><p>A nyomás is állandó.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Izochor \(V=\text{áll.}\)</p></div>
+                <div>
+                    \[p/T=\text{áll.}\]
+                    \[W=0\]
+                </div>
+                <div><p>A térfogat is állandó.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Izoterm \(T=\text{áll.}\)</p></div>
+                <div>
+                    \[pV=\text{áll.}\]
+                    \[\delta W=-pdV\]
+                    \[W=-\int_{V_1}^{V_2}pdV=p_1V_1\ln(\frac{V_1}{V_2})\]
+                </div>
+                <div><p>A homérséklet is állandó. Sok példa van az 5. dia 9. oldalán.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Molhő</p></div>
+                <div>
+                    <p>Izochor</p>
+                    \[c_{MV}=\frac{f}{2}R\]
+                    <p>Izobár</p>
+                    \[c_{Mp}=(\frac{f}{2}+1)R\]
+                    <p>Adiabatikus kitevő</p>
+                    \[k=\frac{c_{Mp}}{c_{MV}}=\frac{c_p}{c_V}=\frac{f+2}{f}\]
+                </div>
+                <div><p>-</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Adiabatikus állapotváltozás \(Q=0\),\( \triangle E_b=W\)</p></div>
+                <div>
+                    \[dE_b=\delta W\]
+                    \[p_1{V_1}^k=p_2{V_2}^k\]
+                </div>
+                <div><p>A hőátadás nulla.</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Poisson-egyenletek</p></div>
+                <div>
+                    \[p_1{V_1}^k=p_2{V_2}^k\]
+                    \[T_1{V_1}^k=T_2{V_2}^k\]
+                    \[\frac{{p_1}^{k-1}}{{T_1}^k}=\frac{{p_2}^{k-1}}{{T_2}^k}\]
+                </div>
+                <div><p>-</p></div>
+            </div>
+            <div class="phys-table">
+                <div><p>Entrópia (rendezetlenség)</p></div>
+                <div>
+                    \[S=k\cdot\ln(Y)\]
+                    \[k=1,38\cdot10^{-23}\space J/k\]
+                    <p>(Boltzzmann-állandó)</p>
+                    \[dS=\frac{\delta Q}{T}\]
+                </div>
+                <div><p>-</p></div>
+            </div>
         </fold-group>
         <fold-group title="The future is coming..." default-state="closed">
+            <p>Az utolsó 3 dolog (hőszívattyú, hűtőgép) az 5. diában található. (<a href="https://www.uni-miskolc.hu/~www_fiz/pszota/Fizika_BI_BF/Fizika_BI_BF_ea_05.pdf">Link</a>)</p>
             <img src="https://media.tenor.com/fTTVgygGDh8AAAAM/kitty-cat-sandwich.gif" alt="" srcset="">
             <!--
-            <div class="phys-table">
-                <div><p></p></div>
-                <div>
-                    \[\]
-                </div>
-                <div><p></p></div>
-            </div>
-            <div class="phys-table">
-                <div><p></p></div>
-                <div>
-                    \[\]
-                </div>
-                <div><p></p></div>
-            </div>
-            <div class="phys-table">
-                <div><p></p></div>
-                <div>
-                    \[\]
-                </div>
-                <div><p></p></div>
-            </div>
             <div class="phys-table">
                 <div><p></p></div>
                 <div>
